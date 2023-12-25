@@ -1,0 +1,19 @@
+version: '3'
+services:
+  kafka-container:
+    build: ./broker-test  # Replace with the path to the directory containing your Kafka Dockerfile
+    ports:
+      - "8084:8084"
+      - "9092:9092"
+    networks:
+      - my-network
+  zookeeper-container:
+    build: ./zookeeper-test  # Replace with the path to the directory containing your Zookeeper Dockerfile
+    ports:
+      - "8081:8081"
+      - "2181:2181"
+    networks:
+      - my-network
+networks:
+  my-network:
+    driver: host
